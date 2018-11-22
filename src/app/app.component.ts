@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'neo-pipes';
+  public list = [
+    { name: 'John', city: 'New York' },
+    { name: 'Foo', city: 'Boston' },
+    { name: 'Bar', city: 'New York' },
+    { name: 'Moo', city: 'Chicago' },
+    { name: 'Doe', city: 'New York' }];
+
+  public searchDescripcion = '';
+  public camelCase = 'CamelCaseParse';
 }

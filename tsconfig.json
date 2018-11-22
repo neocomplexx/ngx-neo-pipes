@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-neo-pipes": [
+        "dist/ngx-neo-pipes"
+      ],
+      "ngx-neo-pipes/*": [
+        "dist/ngx-neo-pipes/*"
+      ]
+    }
   }
 }
