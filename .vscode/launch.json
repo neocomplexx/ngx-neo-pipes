@@ -11,7 +11,7 @@
             "url": "http://localhost:4200",
             "webRoot": "${workspaceFolder}",
             "sourceMapPathOverrides": {
-                "webpack:///ng://ngx-neo-pipes/lib/*": "${workspaceFolder}/projects/ngx-neo-pipes/src/lib/*"
+                "webpack:///ng://@neocomplexx/ngx-neo-pipes/lib/*": "${workspaceFolder}/projects/ngx-neo-pipes/src/lib/*"
             },
             
         },
