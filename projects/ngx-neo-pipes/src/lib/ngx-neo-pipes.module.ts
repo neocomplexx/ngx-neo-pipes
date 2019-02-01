@@ -3,12 +3,13 @@ import {
   NumberPipe, TextPipe, TextPipeTwoLevel, NumberPipeTwoLevel,
   BeautifyPipe, DatePipe, RangePipe, RangePipeTwoLevel
 } from './filters.pipe';
+import { PadLeftPipe } from './number.pipe';
 
 @NgModule({
   declarations: [NumberPipe, TextPipe, TextPipeTwoLevel, NumberPipeTwoLevel,
-    BeautifyPipe, DatePipe, RangePipe, RangePipeTwoLevel],
+    BeautifyPipe, DatePipe, RangePipe, RangePipeTwoLevel, PadLeftPipe],
   exports: [NumberPipe, TextPipe, TextPipeTwoLevel, NumberPipeTwoLevel,
-    BeautifyPipe, DatePipe, RangePipe, RangePipeTwoLevel],
+    BeautifyPipe, DatePipe, RangePipe, RangePipeTwoLevel, PadLeftPipe],
 })
 export class NgxNeoPipesModule {
   static forRoot(): ModuleWithProviders {
