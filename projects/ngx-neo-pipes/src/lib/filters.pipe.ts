@@ -78,6 +78,22 @@ export class NumberPipe implements PipeTransform {
 }
 
 @Pipe({
+    name: 'toStringFilter'
+})
+@Injectable()
+export class ToStringPipe implements PipeTransform {
+    transform(items: any[], value: string): any[] {
+        if (!items) {
+            return [];
+        }
+        if (!value) {
+            return items;
+        }
+        return items.filter(singleItem => singleItem.toString().toLowerCase().includes(value.toLowerCase()));
+    }
+}
+
+@Pipe({
     name: 'numberFilter2Level'
 })
 @Injectable()
