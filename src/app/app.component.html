@@ -11,7 +11,7 @@
         <input id="cityFilter" type="text" class="form-control" [(ngModel)]="searchDescripcion" placeholder="City filter" />
       </div>
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let item of list | textFilter : 'city' : searchDescripcion">
+        <li class="list-group-item" *ngFor="let item of list | functionFilter : callbackSearch">
           {{item | json}}
         </li>
       </ul>

@@ -15,4 +15,8 @@ export class AppComponent {
 
   public searchDescripcion = '';
   public camelCase = 'CamelCaseParse';
+
+  readonly callbackSearch = (item: any) => {
+    return item.city === 'New York';
+  }
 }

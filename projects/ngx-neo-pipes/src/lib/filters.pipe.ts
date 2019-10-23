@@ -1,13 +1,26 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
 
 /**
- * @author jcangelosi
+ * Filter object array from property
  */
+@Pipe({
+    name: 'functionFilter'
+})
+@Injectable()
+export class FuncFilterPipe implements PipeTransform {
+    transform(items: any[], callback: (value: any) => boolean): any[] {
 
+        if (!items || !callback) {
+            return [];
+        }
 
- /**
-  * Filter object array from property
-  */
+        return items.filter(callback);
+    }
+}
+
+/**
+ * Filter object array from property
+ */
 @Pipe({
     name: 'textFilter'
 })
@@ -60,12 +73,12 @@ export class TextPipeTwoLevel implements PipeTransform {
 })
 @Injectable()
 export class NumberPipe implements PipeTransform {
-     /**
-     * @author jcangelosi
-     * Filtra el arreglo items comparando el valor de su campo field (de tipo number) con el valor de value
-     * idea general : items.field == value
-     * SOLO FUNCIONA CON NUMEROS
-     */
+    /**
+    * @author jcangelosi
+    * Filtra el arreglo items comparando el valor de su campo field (de tipo number) con el valor de value
+    * idea general : items.field == value
+    * SOLO FUNCIONA CON NUMEROS
+    */
     transform(items: any[], field: string, value: number): any[] {
         if (!items) {
             return [];
@@ -133,20 +146,20 @@ export class RangePipe implements PipeTransform {
             return items;
         }
         if (value.toString().includes('<')) { // Caso 1: es menor
-          const numeros = value.split('<');
-          const numero: number = +numeros[1];
-          return items.filter(singleItem => singleItem[field] < numero);
+            const numeros = value.split('<');
+            const numero: number = +numeros[1];
+            return items.filter(singleItem => singleItem[field] < numero);
         }
         if (value.toString().includes('-')) { // Caso 2: Rango
-          const numeros = value.split('-');
-          const numero1: number = + numeros[0];
-          const numero2: number = + numeros[1];
-          return items.filter(singleItem => singleItem[field] >= numero1 && singleItem[field] < numero2);
+            const numeros = value.split('-');
+            const numero1: number = + numeros[0];
+            const numero2: number = + numeros[1];
+            return items.filter(singleItem => singleItem[field] >= numero1 && singleItem[field] < numero2);
         }
         if (value.toString().includes('>=')) { // Caso 3: Mayor o Igual
-          const numeros = value.split('>=');
-          const numero: number = + numeros[1];
-          return items.filter(singleItem => singleItem[field] >= numero);
+            const numeros = value.split('>=');
+            const numero: number = + numeros[1];
+            return items.filter(singleItem => singleItem[field] >= numero);
         }
         // Caso 4, item vacio
         return items;
@@ -171,21 +184,21 @@ export class RangePipeTwoLevel implements PipeTransform {
             return items;
         }
         if (value.toString().includes('<')) { // Caso 1: es menor
-          const numeros = value.split('<');
-          const numero: number = +numeros[1];
-          return items.filter(singleItem => singleItem[firstField][secondField]  < numero);
+            const numeros = value.split('<');
+            const numero: number = +numeros[1];
+            return items.filter(singleItem => singleItem[firstField][secondField] < numero);
         }
         if (value.toString().includes('-')) { // Caso 2: Rango
-          const numeros = value.split('-');
-          const numero1: number = + numeros[0];
-          const numero2: number = + numeros[1];
-          return items.filter(singleItem => singleItem[firstField][secondField]  >= numero1 &&
-                                singleItem[firstField][secondField]  < numero2);
+            const numeros = value.split('-');
+            const numero1: number = + numeros[0];
+            const numero2: number = + numeros[1];
+            return items.filter(singleItem => singleItem[firstField][secondField] >= numero1 &&
+                singleItem[firstField][secondField] < numero2);
         }
         if (value.toString().includes('>')) { // Caso 3: Mayor o Igual
-          const numeros = value.split('>');
-          const numero: number = + numeros[1];
-          return items.filter(singleItem => singleItem[firstField][secondField] >= numero);
+            const numeros = value.split('>');
+            const numero: number = + numeros[1];
+            return items.filter(singleItem => singleItem[firstField][secondField] >= numero);
         }
         // Caso 4, item vacio
         return items;
@@ -205,16 +218,16 @@ export class DatePipe implements PipeTransform {
      * Filtrara el arreglo items por una fecha representada por un string
      */
     transform(items: string[], field: string, value: string): any[] {
-      if (!items) {
-          return [];
-      }
-      if (!field || !value) {
-          return items;
-      }
-      // caso contrario la fecha es valida
-      const valores: String[] = value.split('-');
-      const fecha: String = valores[2] + '/' + valores[1] + '/' + valores[0] ;
-      return items.filter(singleItem => singleItem[field].toLowerCase().includes(fecha));
+        if (!items) {
+            return [];
+        }
+        if (!field || !value) {
+            return items;
+        }
+        // caso contrario la fecha es valida
+        const valores: String[] = value.split('-');
+        const fecha: String = valores[2] + '/' + valores[1] + '/' + valores[0];
+        return items.filter(singleItem => singleItem[field].toLowerCase().includes(fecha));
     }
 }
 /**
@@ -223,15 +236,15 @@ export class DatePipe implements PipeTransform {
  */
 @Pipe({ name: 'beautify' })
 export class BeautifyPipe implements PipeTransform {
-  transform(text: string) {
-      if ( text) {
-        const palabras: string [] = text.split(/(?=[A-Z])/);
-        let palabraAretornar = '';
-        for (const palabra of palabras ) {
-           palabraAretornar = palabraAretornar.concat(' ' , palabra);
+    transform(text: string) {
+        if (text) {
+            const palabras: string[] = text.split(/(?=[A-Z])/);
+            let palabraAretornar = '';
+            for (const palabra of palabras) {
+                palabraAretornar = palabraAretornar.concat(' ', palabra);
+            }
+            return palabraAretornar;
         }
-         return palabraAretornar;
-       }
-      return text;
+        return text;
     }
-  }
+}

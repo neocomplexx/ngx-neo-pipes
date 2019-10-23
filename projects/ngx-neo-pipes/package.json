@@ -1,6 +1,6 @@
 {
   "name": "@neocomplexx/ngx-neo-pipes",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0"
@@ -20,7 +20,7 @@
     "Angular",
     "Pipes",
     "Library",
-    "Componet",
+    "Component",
     "NeoComplexx"
   ],
   "license": "MIT"
