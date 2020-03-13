@@ -17,14 +17,15 @@ export class AccentPipe implements PipeTransform {
     transform(value: string, replace: boolean) {
         if (value) {
             if (replace) {
-                let val = value.replace(/1a/g, 'á');
-                val = value.replace(/1e/g, 'é');
-                val = value.replace(/1i/g, 'í');
-                val = value.replace(/1o/g, 'ó');
-                val = value.replace(/1u/g, 'ú');
+                let val = value;
+                val = val.replace(/1a/g, 'á');
+                val = val.replace(/1e/g, 'é');
+                val = val.replace(/1i/g, 'í');
+                val = val.replace(/1o/g, 'ó');
+                val = val.replace(/1u/g, 'ú');
                 return val;
             } else {
-                return value.replace('1', '');
+                return value.replace(/1/g, '');
             }
         }
     }
